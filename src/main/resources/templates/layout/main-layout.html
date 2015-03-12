@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">FitApp</title>
+<link rel="stylesheet"
+	href="bower_component/bootstrap-css-only/css/bootstrap.css" />
+<script src="bower_component/angular/angular.js"></script>
+<script src="bower_component/angular-resource/angular-resource.js"></script>
+</head>
+
+<body>
+	<div th:replace="layout/header :: header"></div>
+	<div class="container">
+		<div layout:fragment="content"></div>
+	</div>
+</body>
+</html>

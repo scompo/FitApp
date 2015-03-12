@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<nav class="navbar navbar-default" th:fragment="header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/"><span
+				class="glyphicon glyphicon-home" aria-hidden="true"></span></a> <a
+				class="navbar-brand" href="/">FitApp</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="#" th:href="@{/activities}">Activity</a></li>
+			<li><a href="#" th:href="@{/foods}">Food</a></li>
+		</ul>
+	</div>
+</nav>
+</html>

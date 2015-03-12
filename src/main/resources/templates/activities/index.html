@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main-layout">
+<head>
+<title>Activities</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div data-ng-app="activitiesMain">
+			<div data-ng-controller="activitiesController">
+				<form>
+					Name: <input type="text" data-ng-model="newItem.name" /> <br /> <input
+						type="submit" data-ng-click="save(newActivity)" value="Save" />
+				</form>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="activity in activities">
+							<td>{{ activity.name }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<nav>
+					<ul class="pager">
+						<li><a href="#" data-ng-click="prev()">Previous</a></li>
+						<li><a href="#" data-ng-click="next()">Next</a></li>
+					</ul>
+				</nav>
+			</div>
+			<script src="activities/activitiesMain.js"></script>
+			<script src="activities/activitiesService.js"></script>
+			<script src="activities/activitiesController.js"></script>
+		</div>
+	</div>
+</body>
+</html>
