@@ -4,7 +4,7 @@ import it.scompo.rest.CrudController;
 
 public interface ActivitiesController extends CrudController<Activity, Long>{
 
-	static final String URI = "api/v1/activities";
+	static final String URI = "/api/v1/activities";
 	
 	
 }
