@@ -11,8 +11,7 @@
 			activitiesRestService
 					.getPaginated(function(resource) {
 						console.log(resource);
-						$scope.activities = resource._embedded != undefined ? resource._embedded.activities
-								: [];
+						$scope.activities = resource.content;
 					});
 		}
 

@@ -16,11 +16,13 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
+							<th>id</th>
 							<th>name</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr data-ng-repeat="activity in activities">
+							<td>{{ activity.id }}</td>
 							<td>{{ activity.name }}</td>
 						</tr>
 					</tbody>
@@ -32,9 +34,9 @@
 					</ul>
 				</nav>
 			</div>
-			<script src="activities/activitiesMain.js"></script>
-			<script src="activities/activitiesService.js"></script>
-			<script src="activities/activitiesController.js"></script>
+			<script src="js/internal/activities/activitiesMain.js"></script>
+			<script src="js/internal/activities/activitiesService.js"></script>
+			<script src="js/internal/activities/activitiesController.js"></script>
 		</div>
 	</div>
 </body>

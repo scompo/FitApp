@@ -3,6 +3,7 @@
 	var ActivitiesFactory = function($resource) {
 
 		return $resource('/api/v1/activities', {}, {
+			
 			getPaginated : {
 				method : 'GET'
 			},

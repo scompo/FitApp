@@ -1,4 +1,6 @@
-package it.scompo.FitApp.api.activities;
+package it.scompo.FitApp.api.v1.activities;
+
+import it.scompo.rest.BusinessObject;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Activity{
+public class Activity implements BusinessObject{
+
+	private static final long serialVersionUID = 8316528756613808918L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
