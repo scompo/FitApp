@@ -15,4 +15,4 @@ release.properties
 # Others.
 
 *~
-tumblr-my.properties
+*.log
