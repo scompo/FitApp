@@ -1,31 +1,61 @@
 (function(angular) {
 
-	var ActivitiesController = function($scope, activitiesRestService) {
+	angular.module('activitiesMain.controllers', []).controller(
+			'activitiesController',
+			[
+					'$scope',
+					'activitiesRestService',
+					function($scope, activitiesRestService) {
 
-		$scope.newItem = {};
+						$scope.page = 0;
+						$scope.size = 5;
+						$scope.totalPages = 0;
 
-		getResources();
+						$scope.newItem = {};
 
-		function getResources() {
+						getData();
 
-			activitiesRestService
-					.getPaginated(function(resource) {
-						console.log(resource);
-						$scope.activities = resource.content;
-					});
-		}
+						function getData() {
 
-		$scope.save = function() {
+							activitiesRestService.getPaginated({
 
-			activitiesRestService.save($scope.newItem);
-			getResources();
-		};
+								page : $scope.page,
+								size : $scope.size
 
-	};
+							}, function(data) {
 
-	ActivitiesController.$inject = [ '$scope', 'activitiesRestService' ];
+								$scope.activities = data.content;
+								$scope.totalPages = data.totalPages;
+							});
+						}
+						;
 
-	angular.module('activitiesMain.controllers').controller(
-			'activitiesController', ActivitiesController);
+						$scope.save = function() {
+
+							activitiesRestService.save($scope.newItem,
+									function() {
+										getData();
+									});
+						};
+
+						$scope.next = function() {
+
+							if ($scope.page < $scope.totalPages - 1) {
+
+								$scope.page++;
+							}
+							getData();
+						};
+
+						$scope.prev = function() {
+
+							if ($scope.page > 0) {
+
+								$scope.page--;
+							}
+							getData();
+						};
+
+					} ]);
 
 }(angular));

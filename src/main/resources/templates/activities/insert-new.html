@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="panel panel-default" th:fragment="insert-new">
+	<div class="panel-heading">
+		<h3>Insert new Activity</h3>
+	</div>
+	<div class="panel-body">
+		<form>
+			<div class="form-group">
+				<label for="textName">Name:</label> <input type="text"
+					data-ng-model="newItem.name" id="textName" /> <input type="submit"
+					data-ng-click="save(newActivity)" value="Save" />
+			</div>
+		</form>
+	</div>
+</div>
+</html>

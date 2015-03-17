@@ -1,21 +1,21 @@
 (function(angular) {
 
-	var ActivitiesFactory = function($resource) {
-
-		return $resource('/api/v1/activities', {}, {
+	angular.module('activitiesMain.services', [ 'ngResource' ]).factory(
 			
-			getPaginated : {
-				method : 'GET'
-			},
-			save : {
-				method : 'POST'
-			}
-		});
-	};
+			'activitiesRestService', [ '$resource', function($resource) {
 
-	ActivitiesFactory.$inject = [ '$resource' ];
+				return $resource('/api/v1/activities', {}, {
 
-	angular.module('activitiesMain.services').factory('activitiesRestService',
-			ActivitiesFactory);
+					getPaginated : {
+
+						method : 'GET'
+					},
+
+					save : {
+
+						method : 'POST'
+					}
+				});
+			} ]);
 
 }(angular));

@@ -88,6 +88,7 @@
 					<jsTestSrcDir>src/test/resources/public/js</jsTestSrcDir>
 					<preloadSources>
 						<source>src/main/resources/public/js/vendor/angular.js</source>
+						<source>src/main/resources/public/js/vendor/angular-mock.js</source>
 						<source>src/main/resources/public/js/vendor/angular-resource.js</source>
 						<source>src/main/resources/public/js/internal/main.js</source>
 						<source>src/main/resources/public/js/internal/activities/activitiesMain.js</source>
