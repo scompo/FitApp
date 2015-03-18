@@ -27,12 +27,8 @@
 							</tr>
 						</tbody>
 					</table>
-					<nav>
-						<ul class="pager">
-							<li><a data-ng-click="prev()">Previous</a></li>
-							<li><a data-ng-click="next()">Next</a></li>
-						</ul>
-					</nav>
+					<div data-pagination="" data-items-per-page ="size" data-total-items="totalItems" data-ng-model="page"
+						data-max-size="size" data-ng-change = "paginate()" class="pagination-sm"></div>
 				</div>
 			</div>
 

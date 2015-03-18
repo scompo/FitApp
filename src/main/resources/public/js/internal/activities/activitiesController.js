@@ -1,61 +1,53 @@
 (function(angular) {
 
-	angular.module('activitiesMain.controllers', []).controller(
-			'activitiesController',
-			[
-					'$scope',
-					'activitiesRestService',
-					function($scope, activitiesRestService) {
+	angular.module('activitiesMain.controllers', [ 'ui.bootstrap' ])
+			.controller(
+					'activitiesController',
+					[
+							'$scope',
+							'activitiesRestService',
+							function($scope, activitiesRestService) {
 
-						$scope.page = 0;
-						$scope.size = 5;
-						$scope.totalPages = 0;
+								$scope.page = 1;
+								$scope.size = 5;
+								$scope.totalPages = 0;
+								$scope.totalItems = 0;
 
-						$scope.newItem = {};
+								$scope.newItem = {};
 
-						getData();
+								getData();
 
-						function getData() {
+								function getData() {
+									console.log($scope.page);
+									console.log($scope.size);
+									activitiesRestService.getPaginated({
 
-							activitiesRestService.getPaginated({
+										page : $scope.page - 1,
+										size : $scope.size
 
-								page : $scope.page,
-								size : $scope.size
+									}, function(data) {
 
-							}, function(data) {
-
-								$scope.activities = data.content;
-								$scope.totalPages = data.totalPages;
-							});
-						}
-						;
-
-						$scope.save = function() {
-
-							activitiesRestService.save($scope.newItem,
-									function() {
-										getData();
+										$scope.activities = data.content;
+										$scope.totalPages = data.totalPages;
+										$scope.totalItems = data.totalElements;
+										console.log($scope.totalPages);
+										console.log($scope.totalItems);
 									});
-						};
+								}
+								;
 
-						$scope.next = function() {
+								$scope.save = function() {
 
-							if ($scope.page < $scope.totalPages - 1) {
+									activitiesRestService.save($scope.newItem,
+											function() {
+												getData();
+											});
+								};
 
-								$scope.page++;
-							}
-							getData();
-						};
+								$scope.paginate = function() {
 
-						$scope.prev = function() {
-
-							if ($scope.page > 0) {
-
-								$scope.page--;
-							}
-							getData();
-						};
-
-					} ]);
+									getData();
+								};
+							} ]);
 
 }(angular));
