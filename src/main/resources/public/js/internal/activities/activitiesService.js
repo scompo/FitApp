@@ -1,21 +1,21 @@
 (function(angular) {
 
 	angular.module('activitiesMain.services', [ 'ngResource' ]).factory(
-			
-			'activitiesRestService', [ '$resource', function($resource) {
 
-				return $resource('/api/v1/activities', {}, {
+	'activitiesRestService', [ '$resource', function($resource) {
 
-					getPaginated : {
+		return $resource('/api/v1/activities/:id', {}, {
 
-						method : 'GET'
-					},
+			getPaginated : {
 
-					save : {
+				method : 'GET'
+			},
 
-						method : 'POST'
-					}
-				});
-			} ]);
+			save : {
+
+				method : 'POST'
+			}
+		});
+	} ]);
 
 }(angular));

@@ -18,17 +18,24 @@
 							<tr>
 								<th>id</th>
 								<th>name</th>
+								<th>date</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr data-ng-repeat="activity in activities">
 								<td>{{ activity.id }}</td>
 								<td>{{ activity.name }}</td>
+								<td>{{ activity.date | getDateFromRest | date :
+									'dd/MM/yyyy' }}</td>
+								<td><a data-ng-click="deleteById(activity.id)"><span
+				class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 							</tr>
 						</tbody>
 					</table>
-					<div data-pagination="" data-items-per-page ="size" data-total-items="totalItems" data-ng-model="page"
-						data-max-size="size" data-ng-change = "paginate()" class="pagination-sm"></div>
+					<div data-pagination="" data-items-per-page="size"
+						data-total-items="totalItems" data-ng-model="page"
+						data-max-size="size" data-ng-change="paginate()"
+						class="pagination-sm"></div>
 				</div>
 			</div>
 

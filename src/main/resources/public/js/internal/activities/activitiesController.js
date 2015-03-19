@@ -18,8 +18,7 @@
 								getData();
 
 								function getData() {
-									console.log($scope.page);
-									console.log($scope.size);
+
 									activitiesRestService.getPaginated({
 
 										page : $scope.page - 1,
@@ -30,8 +29,6 @@
 										$scope.activities = data.content;
 										$scope.totalPages = data.totalPages;
 										$scope.totalItems = data.totalElements;
-										console.log($scope.totalPages);
-										console.log($scope.totalItems);
 									});
 								}
 								;
@@ -48,6 +45,16 @@
 
 									getData();
 								};
+
+								$scope.deleteById = function(id) {
+									
+									var param = {'id' : id};
+
+									activitiesRestService.remove(param, function() {
+										
+										getData();
+									});
+								}
 							} ]);
 
 }(angular));
