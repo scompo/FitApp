@@ -1,10 +1,13 @@
 package it.scompo.FitApp.test.api.v1.activities;
 
+import static it.scompo.FitApp.test.api.v1.activities.ActivitiesConstants.ACTIVITY_TO_SAVE_NO_DATE;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import it.scompo.FitApp.Application;
 import it.scompo.FitApp.api.v1.activities.ActivitiesController;
 import it.scompo.FitApp.api.v1.activities.ActivitiesService;
@@ -36,10 +39,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringApplicationConfiguration(classes = { Application.class })
 public class ActivitiesControllerTest {
 
-	protected static final String TEST_NAME = "blah";
-
-	private static final Activity ACTIVITY_TO_SAVE = new Activity(TEST_NAME);
-
 	@Autowired
 	private WebApplicationContext wac;
 
@@ -65,7 +64,7 @@ public class ActivitiesControllerTest {
 	@Test
 	public void testGetById() throws Exception {
 
-		Activity saved = activitiesService.save(ACTIVITY_TO_SAVE);
+		Activity saved = activitiesService.save(ACTIVITY_TO_SAVE_NO_DATE);
 
 		MvcResult res = mockMvc
 				.perform(get(ActivitiesController.URI + "/" + saved.getId()))
@@ -88,7 +87,7 @@ public class ActivitiesControllerTest {
 								.accept(MediaType.APPLICATION_JSON)
 								.content(
 										getStringFromObject(jsonMapper,
-												ACTIVITY_TO_SAVE)))
+												ACTIVITY_TO_SAVE_NO_DATE)))
 				.andExpect(status().isOk()).andReturn();
 
 		Activity resActivity = getObjectFromString(jsonMapper, res
@@ -96,7 +95,7 @@ public class ActivitiesControllerTest {
 
 		assertNotNull(resActivity);
 		assertNotNull(resActivity.getId());
-		assertEquals(ACTIVITY_TO_SAVE.getName(), resActivity.getName());
+		assertEquals(ACTIVITY_TO_SAVE_NO_DATE.getName(), resActivity.getName());
 
 		Activity resDb = activitiesService.getById(resActivity.getId());
 
