@@ -1,7 +1,13 @@
 package it.scompo.FitApp.test.api.v1.activities;
 
+import static it.scompo.FitApp.test.api.v1.activities.ActivitiesConstants.ACTIVITIES_TO_PAGE;
+import static it.scompo.FitApp.test.api.v1.activities.ActivitiesConstants.ACTIVITY_TO_SAVE_COMPLETE;
 import static it.scompo.FitApp.test.api.v1.activities.ActivitiesConstants.ACTIVITY_TO_SAVE_NO_DATE;
-import static org.junit.Assert.*;
+import static it.scompo.FitApp.test.api.v1.activities.ActivitiesConstants.NUM_TO_CREATE_PAGINATED;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import it.scompo.FitApp.Application;
 import it.scompo.FitApp.api.v1.activities.ActivitiesRepository;
 import it.scompo.FitApp.api.v1.activities.ActivitiesService;
@@ -9,11 +15,14 @@ import it.scompo.FitApp.api.v1.activities.Activity;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,13 +43,15 @@ public class ActivitiesCrudServiceTest {
 
 	@After
 	public void tearDown() throws Exception {
+
+		activitiesRepository.deleteAll();
 	}
 
 	@Test
 	public void testGetById() {
 
 		Activity activitySaved = activitiesRepository
-				.save(ACTIVITY_TO_SAVE_NO_DATE);
+				.save(ACTIVITY_TO_SAVE_COMPLETE);
 
 		Activity res = activitiesService.getById(activitySaved.getId());
 
@@ -49,12 +60,27 @@ public class ActivitiesCrudServiceTest {
 
 	@Test
 	public void testGetPaginated() {
-		fail("Not yet implemented");
+
+		activitiesRepository.save(ACTIVITIES_TO_PAGE);
+
+		Page<Activity> res = activitiesService.getPaginated(new PageRequest(0,
+				10));
+
+		assertNotNull(res);
+		assertEquals(NUM_TO_CREATE_PAGINATED, res.getTotalElements());
+		assertEquals(10, res.getContent().size());
 	}
 
 	@Test
 	public void testSave() {
-		fail("Not yet implemented");
+
+		Activity res = activitiesService.save(ACTIVITY_TO_SAVE_COMPLETE);
+
+		assertNotNull(res);
+		assertNotNull(res.getId());
+		assertEquals(ACTIVITY_TO_SAVE_COMPLETE.getDate(), res.getDate());
+		assertEquals(ACTIVITY_TO_SAVE_COMPLETE.getTime(), res.getTime());
+		assertEquals(ACTIVITY_TO_SAVE_COMPLETE.getName(), res.getName());
 	}
 
 	@Test
@@ -70,13 +96,22 @@ public class ActivitiesCrudServiceTest {
 	}
 
 	@Test
+	@Ignore("not used")
 	public void testUpdate() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testDelete() {
-		fail("Not yet implemented");
+
+		Activity activitySaved = activitiesRepository
+				.save(ACTIVITY_TO_SAVE_COMPLETE);
+
+		Long idDeleted = activitySaved.getId();
+
+		activitiesService.delete(idDeleted);
+
+		assertFalse(activitiesRepository.exists(idDeleted));
 	}
 
 }
