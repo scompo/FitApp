@@ -2,7 +2,7 @@ package it.scompo.FitApp.api.v1.activities;
 
 import it.scompo.rest.BusinessObject;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,10 +26,10 @@ public class Activity implements BusinessObject {
 	private String name;
 	
 	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime startTime;
+	private ZonedDateTime startTime;
 	
 	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime endTime;
+	private ZonedDateTime endTime;
 
 	public Activity() {
 		
@@ -55,19 +55,19 @@ public class Activity implements BusinessObject {
 		this.name = name;
 	}
 
-	public LocalDateTime getStartTime() {
+	public ZonedDateTime getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(LocalDateTime startTime) {
+	public void setStartTime(ZonedDateTime startTime) {
 		this.startTime = startTime;
 	}
 
-	public LocalDateTime getEndTime() {
+	public ZonedDateTime getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(LocalDateTime endTime) {
+	public void setEndTime(ZonedDateTime endTime) {
 		this.endTime = endTime;
 	}
 

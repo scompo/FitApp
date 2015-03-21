@@ -2,11 +2,20 @@
 
 	angular.module('activitiesMain',
 			[ 'activitiesMain.controllers', 'activitiesMain.services' ])
-			.filter('getDateFromRest', function() {
+			.filter('getDateFromRest', function($filter) {
 
 				return function(item) {
+					
+					var angularDateFilter = $filter('date');
 
-					return new Date(item);
+					var result = '';
+
+					if (item != undefined) {
+
+						result = angularDateFilter(item, 'dd/MM/yyyy HH:mm');
+					}
+
+					return result;
 				}
 			});
 
