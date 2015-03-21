@@ -8,6 +8,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ApplicationClockConfiguration {
 
+	/**
+	 * Application clock configuration.
+	 * 
+	 * @return the application {@link Clock}.
+	 */
 	@Bean
 	public Clock getApplicationClock() {
 
