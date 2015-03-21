@@ -16,19 +16,17 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>id</th>
 								<th>name</th>
-								<th>date</th>
+								<th>start time</th>
+								<th>delete</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr data-ng-repeat="activity in activities">
-								<td>{{ activity.id }}</td>
 								<td>{{ activity.name }}</td>
-								<td>{{ activity.date | getDateFromRest | date :
-									'dd/MM/yyyy' }}</td>
+								<td>{{ activity.startTime | getDateFromRest }}</td>
 								<td><a data-ng-click="deleteById(activity.id)"><span
-				class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+										class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 							</tr>
 						</tbody>
 					</table>

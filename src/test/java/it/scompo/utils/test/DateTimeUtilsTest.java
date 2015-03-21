@@ -5,9 +5,8 @@ import it.scompo.FitApp.config.DateTimeUtils;
 
 import java.time.Clock;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 import org.junit.After;
 import org.junit.Before;
@@ -31,15 +30,8 @@ public class DateTimeUtilsTest {
 	}
 
 	@Test
-	public void testGetCurrentDate() {
+	public void testGetCurrentDateTime() {
 
-		assertEquals(LocalDate.now(testClock), dateTimeUtils.getCurrentDate());
+		assertEquals(ZonedDateTime.now(testClock), dateTimeUtils.getCurrentDateTime());
 	}
-
-	@Test
-	public void testGetCurrentTime() {
-		
-		assertEquals(LocalTime.now(testClock), dateTimeUtils.getCurrentTime());
-	}
-
 }

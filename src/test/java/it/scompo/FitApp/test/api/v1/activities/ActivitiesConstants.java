@@ -1,9 +1,10 @@
 package it.scompo.FitApp.test.api.v1.activities;
 
+import it.scompo.FitApp.api.v1.activities.Activity;
+
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import it.scompo.FitApp.api.v1.activities.Activity;
 
 public class ActivitiesConstants {
 
@@ -12,8 +13,14 @@ public class ActivitiesConstants {
 
 	public static final Activity ACTIVITY_TO_SAVE_NO_DATE = new Activity(
 			TEST_NAME_NO_DATE);
-	public static final Activity ACTIVITY_TO_SAVE_COMPLETE = new Activity(
-			TEST_NAME_COMPLETE);
+
+	public static final Activity ACTIVITY_TO_SAVE_COMPLETE = new Activity();
+
+	{
+		ACTIVITY_TO_SAVE_COMPLETE.setName(TEST_NAME_COMPLETE);
+		ACTIVITY_TO_SAVE_COMPLETE.setStartTime(ZonedDateTime.now());
+		ACTIVITY_TO_SAVE_COMPLETE.setEndTime(ZonedDateTime.now());
+	}
 
 	public static final int NUM_TO_CREATE_PAGINATED = 100;
 
