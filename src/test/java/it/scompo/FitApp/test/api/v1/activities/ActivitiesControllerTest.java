@@ -1,17 +1,15 @@
 package it.scompo.FitApp.test.api.v1.activities;
 
 import static it.scompo.FitApp.test.api.v1.activities.ActivitiesConstants.ACTIVITY_TO_SAVE_NO_DATE;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import it.scompo.FitApp.Application;
-import it.scompo.FitApp.api.v1.activities.ActivitiesController;
-import it.scompo.FitApp.api.v1.activities.ActivitiesService;
 import it.scompo.FitApp.api.v1.activities.Activity;
+import it.scompo.FitApp.api.v1.activities.controllers.ActivitiesController;
+import it.scompo.FitApp.api.v1.activities.services.ActivitiesService;
 
 import java.io.IOException;
 

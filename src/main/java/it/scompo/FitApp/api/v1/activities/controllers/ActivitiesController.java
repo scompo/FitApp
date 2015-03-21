@@ -1,5 +1,6 @@
-package it.scompo.FitApp.api.v1.activities;
+package it.scompo.FitApp.api.v1.activities.controllers;
 
+import it.scompo.FitApp.api.v1.activities.Activity;
 import it.scompo.rest.CrudController;
 
 public interface ActivitiesController extends CrudController<Activity, Long>{

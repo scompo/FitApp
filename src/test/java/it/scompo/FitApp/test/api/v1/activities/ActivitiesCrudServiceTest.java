@@ -10,9 +10,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 import it.scompo.FitApp.Application;
-import it.scompo.FitApp.api.v1.activities.ActivitiesRepository;
-import it.scompo.FitApp.api.v1.activities.ActivitiesService;
 import it.scompo.FitApp.api.v1.activities.Activity;
+import it.scompo.FitApp.api.v1.activities.repositories.ActivitiesRepository;
+import it.scompo.FitApp.api.v1.activities.services.ActivitiesService;
 
 import org.junit.After;
 import org.junit.Before;

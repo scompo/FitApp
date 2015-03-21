@@ -1,4 +1,7 @@
-package it.scompo.FitApp.api.v1.activities;
+package it.scompo.FitApp.api.v1.activities.controllers;
+
+import it.scompo.FitApp.api.v1.activities.Activity;
+import it.scompo.FitApp.api.v1.activities.services.ActivitiesService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
