@@ -2,7 +2,15 @@ describe('DateFilter', function() {
 
 	beforeEach(module('activitiesMain'));
 
-	it('shoud create a date if populated', inject(function(
+	it('shoud not return an empty string if the date is correct', inject(function(
+			getDateFromRestFilter) {
+		
+		var date = '2015-03-21T15:13:01.003';
+
+		expect(getDateFromRestFilter(date)).not.toEqual('');
+	}));
+	
+	it('shoud return the correct date', inject(function(
 			getDateFromRestFilter) {
 		
 		var date = '2015-03-21T15:13:01.003';
@@ -21,5 +29,5 @@ describe('DateFilter', function() {
 
 		expect(getDateFromRestFilter(null)).toEqual('');
 	}));
-
+	
 })
