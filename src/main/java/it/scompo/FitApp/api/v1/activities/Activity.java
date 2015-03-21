@@ -2,8 +2,7 @@ package it.scompo.FitApp.api.v1.activities;
 
 import it.scompo.rest.BusinessObject;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,11 +25,11 @@ public class Activity implements BusinessObject {
 
 	private String name;
 	
-	@DateTimeFormat(iso = ISO.DATE)
-	private LocalDate date;
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	private LocalDateTime startTime;
 	
-	@DateTimeFormat(iso = ISO.TIME)
-	private LocalTime time;
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	private LocalDateTime endTime;
 
 	public Activity() {
 		
@@ -56,20 +55,20 @@ public class Activity implements BusinessObject {
 		this.name = name;
 	}
 
-	public LocalDate getDate() {
-		return date;
+	public LocalDateTime getStartTime() {
+		return startTime;
 	}
 
-	public void setDate(LocalDate date) {
-		this.date = date;
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
 	}
 
-	public LocalTime getTime() {
-		return time;
+	public LocalDateTime getEndTime() {
+		return endTime;
 	}
 
-	public void setTime(LocalTime time) {
-		this.time = time;
+	public void setEndTime(LocalDateTime endTime) {
+		this.endTime = endTime;
 	}
 
 	@Override
@@ -99,8 +98,8 @@ public class Activity implements BusinessObject {
 
 	@Override
 	public String toString() {
-		return "Activity [id=" + id + ", name=" + name + ", date=" + date
-				+ ", time=" + time + "]";
+		return "Activity [id=" + id + ", name=" + name + ", startTime="
+				+ startTime + ", endTime=" + endTime + "]";
 	}
 
 }

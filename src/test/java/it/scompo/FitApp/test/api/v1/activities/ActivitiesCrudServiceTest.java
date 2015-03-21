@@ -7,6 +7,7 @@ import static it.scompo.FitApp.test.api.v1.activities.ActivitiesConstants.NUM_TO
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 import it.scompo.FitApp.Application;
 import it.scompo.FitApp.api.v1.activities.ActivitiesRepository;
@@ -78,9 +79,10 @@ public class ActivitiesCrudServiceTest {
 
 		assertNotNull(res);
 		assertNotNull(res.getId());
-		assertEquals(ACTIVITY_TO_SAVE_COMPLETE.getDate(), res.getDate());
-		assertEquals(ACTIVITY_TO_SAVE_COMPLETE.getTime(), res.getTime());
+		assertEquals(ACTIVITY_TO_SAVE_COMPLETE.getStartTime(), res.getStartTime());
+		assertEquals(ACTIVITY_TO_SAVE_COMPLETE.getEndTime(), res.getEndTime());
 		assertEquals(ACTIVITY_TO_SAVE_COMPLETE.getName(), res.getName());
+		
 	}
 
 	@Test
@@ -90,8 +92,8 @@ public class ActivitiesCrudServiceTest {
 
 		assertNotNull(res);
 		assertNotNull(res.getId());
-		assertNotNull(res.getDate());
-		assertNotNull(res.getTime());
+		assertNotNull(res.getStartTime());
+		assertNull(res.getEndTime());
 		assertEquals(ACTIVITY_TO_SAVE_NO_DATE.getName(), res.getName());
 	}
 

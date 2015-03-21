@@ -2,6 +2,7 @@ package it.scompo.FitApp.config;
 
 import java.time.Clock;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,12 @@ public class DateTimeUtils {
 	}
 
 	public void setClock(Clock clock) {
-		
+
 		this.applicationClock = clock;
+	}
+
+	public LocalDateTime getCurrentDateTime() {
+
+		return LocalDateTime.now(getClock());
 	}
 }

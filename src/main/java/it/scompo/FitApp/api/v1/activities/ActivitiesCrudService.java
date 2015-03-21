@@ -35,14 +35,9 @@ public class ActivitiesCrudService extends AbstractCrudService<Activity, Long>
 	@Override
 	public Activity save(Activity entity) {
 		
-		if(entity.getDate() == null){
+		if(entity.getStartTime() == null){
 			
-			entity.setDate(dateTimeUtils.getCurrentDate());
-		}
-		
-		if(entity.getTime() == null){
-			
-			entity.setTime(dateTimeUtils.getCurrentTime());
+			entity.setStartTime(dateTimeUtils.getCurrentDateTime());
 		}
 		
 		return super.save(entity);
